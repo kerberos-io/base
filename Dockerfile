@@ -13,7 +13,7 @@ ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 RUN apt-get install -y git
 
-RUN ARCH=$([ "$(uname -m)" = "armv7l" ] && echo "armv6l" || echo "$(uname -m)") && wget "https://dl.google.com/go/go1.18.linux-$ARCH.tar.gz" && \
+RUN ARCH=$(uname -m) && ARCH=$([ "$(uname -m)" = "armv7l" ] && echo "armv6l") && wget "https://dl.google.com/go/go1.18.linux-$ARCH.tar.gz" && \
     tar -xvf "go1.18.linux-$ARCH.tar.gz" && \
     mv go /usr/local
 
