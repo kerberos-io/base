@@ -17,7 +17,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: false
-        tags: kerberos/base:beta
+        tags: kerberos/base:beta-amd64
     #- name: Scan
     #  uses: Azure/container-scan@v0
     #  with:
@@ -26,4 +26,15 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: kerberos/base:beta
+        tags: kerberos/base:beta-amd64
+
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: crazy-max/ghaction-docker-buildx@v3
+      with:
+        buildx-version: latest
+        qemu-version: latest
+    - name: Available platforms
+      run: echo ${{ steps.buildx.outputs.platforms }}
+    - name: Merge manifest
+      run: docker buildx imagetools create --append -t kerberos/base:beta kerberos/base:beta-amd64
