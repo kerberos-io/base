@@ -46,4 +46,5 @@ RUN ARCH=$(uname -m) && \
     ARCH=$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo $ARCH) && \
     wget "https://dl.google.com/go/go1.18.linux-$ARCH.tar.gz" && \
     tar -xvf "go1.18.linux-$ARCH.tar.gz" && \
+    rm -rf go1.18.linux-$ARCH.tar.gz && \
     mv go /usr/local
