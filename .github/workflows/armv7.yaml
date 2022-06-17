@@ -13,8 +13,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Ls -al
-      run: ls -al
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Set up Docker Buildx
       id: buildx
       uses: crazy-max/ghaction-docker-buildx@v3
@@ -24,6 +24,4 @@ jobs:
     - name: Available platforms
       run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Run Buildx
-      run: |
-        ls -al && \
-        docker buildx build --platform linux/arm/v7 -t kerberos/base:beta --push . 
+      run: docker buildx build --platform linux/arm/v7 -t kerberos/base:beta --push . 

@@ -18,10 +18,10 @@ jobs:
       with:
         push: false
         tags: kerberos/base:beta
-    - name: Scan
-      uses: Azure/container-scan@v0
-      with:
-        image-name: kerberos/base:beta
+    #- name: Scan
+    #  uses: Azure/container-scan@v0
+    #  with:
+    #    image-name: kerberos/base:beta
     - name: Push
       uses: docker/build-push-action@v3
       with:
