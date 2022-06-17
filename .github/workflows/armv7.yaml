@@ -23,5 +23,5 @@ jobs:
       run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Run Buildx
       run: |
-        cd ~ && ls -al && \
+        ls -al && \
         docker buildx build --platform linux/arm/v7 -t kerberos/base:beta --push . 
