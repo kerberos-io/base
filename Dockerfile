@@ -11,8 +11,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essent
 # Clone and build FFMpeg & OpenCV
 
 RUN git clone https://github.com/FFmpeg/FFmpeg && \
-    cd FFmpeg && git checkout n3.4.2 && \
-    ./configure --prefix=/usr/local --target-os=linux --enable-nonfree --enable-avfilter --enable-libx264 --enable-gpl --enable-shared --extra-libs=-latomic && \
+    cd FFmpeg && git checkout n4.4.1 && \
+    ./configure --prefix=/usr/local --target-os=linux --enable-nonfree --enable-avfilter --enable-avresample --enable-libx264 --enable-gpl --enable-shared --extra-libs=-latomic && \
     make -j8 && \
     make install && \
     cd .. && rm -rf FFmpeg
