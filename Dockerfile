@@ -17,7 +17,7 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
     make install && \
     cd .. && rm -rf FFmpeg
 
-RUN	wget -O opencv.zip https://github.com/opencv/opencv/archive/4.5.5.zip && \
+RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.5.5.zip && \
     unzip opencv.zip && mv opencv-4.5.5 opencv && cd opencv && mkdir build && cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/ \
