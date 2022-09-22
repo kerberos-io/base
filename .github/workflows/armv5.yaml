@@ -1,4 +1,4 @@
-name: Docker v6
+name: Docker v5
 
 on:
   push:
