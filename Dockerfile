@@ -38,6 +38,7 @@ RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.7.0.zip && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/ \
     -D OPENCV_GENERATE_PKGCONFIG=YES \
+    -D BUILD_SHARED_LIBS=OFF \
     -D BUILD_TESTS=OFF \
     -D OPENCV_ENABLE_NONFREE=ON \
     #-D BUILD_opencv_dnn=OFF \
