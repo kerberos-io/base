@@ -23,6 +23,7 @@ RUN git clone https://code.videolan.org/videolan/x264.git && \
 RUN git clone https://github.com/FFmpeg/FFmpeg && \
     cd FFmpeg && git checkout n4.4.1 && \
     ./configure --prefix=/usr/local --target-os=linux --enable-nonfree \
+    --extra-ldflags="-latomic" \
     --enable-avfilter \
     --enable-avresample \
     --enable-libx264 \
