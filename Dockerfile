@@ -1,10 +1,10 @@
-FROM debian:bullseye
+FROM debian:wormbook
 LABEL Author=Kerberos.io
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essential \
     cmake libc-ares-dev uuid-dev daemon libwebsockets-dev git \
     cmake wget dh-autoreconf autotools-dev autoconf automake gcc \
-    build-essential libtool make ca-certificates supervisor nasm \
+    build-essential libtool make ca-certificates libc6 supervisor nasm \
     zlib1g-dev tar unzip wget pkg-config
 
 #############################
