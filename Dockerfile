@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essent
     cmake libc-ares-dev uuid-dev daemon libwebsockets-dev git \
     cmake wget dh-autoreconf autotools-dev autoconf automake gcc \
     build-essential libtool make ca-certificates supervisor nasm \
-    zlib1g-dev tar unzip wget pkg-config libavresample-dev 
+    zlib1g-dev tar unzip wget pkg-config
 
 #############################
 # Static build x264
