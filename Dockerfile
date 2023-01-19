@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 LABEL Author=Kerberos.io
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essential \
