@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 LABEL Author=Kerberos.io
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essential \
@@ -34,22 +34,22 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
     make install && \
     cd .. && rm -rf FFmpeg
 
-RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.7.0.zip && \
-    unzip opencv.zip && mv opencv-4.7.0 opencv && cd opencv && mkdir build && cd build && \
-    cmake -D CMAKE_BUILD_TYPE=RELEASE \
-    -D CMAKE_INSTALL_PREFIX=/usr/ \
-    -D OPENCV_GENERATE_PKGCONFIG=YES \
-    -D BUILD_SHARED_LIBS=OFF \
-    -D BUILD_TESTS=OFF \
-    -D OPENCV_ENABLE_NONFREE=ON \
-    #-D BUILD_opencv_dnn=OFF \
-    -D BUILD_opencv_ml=OFF \
-    -D BUILD_opencv_stitching=OFF \
-    -D BUILD_opencv_ts=OFF \
-    -D BUILD_opencv_java_bindings_generator=OFF \
-    -D BUILD_opencv_python_bindings_generator=OFF \
-    -D INSTALL_PYTHON_EXAMPLES=OFF \
-    -D BUILD_EXAMPLES=OFF .. && make -j8 && make install && cd ../.. && rm -rf opencv*
+#RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.7.0.zip && \
+#    unzip opencv.zip && mv opencv-4.7.0 opencv && cd opencv && mkdir build && cd build && \
+#    cmake -D CMAKE_BUILD_TYPE=RELEASE \
+#    -D CMAKE_INSTALL_PREFIX=/usr/ \
+#    -D OPENCV_GENERATE_PKGCONFIG=YES \
+#    -D BUILD_SHARED_LIBS=OFF \
+#    -D BUILD_TESTS=OFF \
+#    -D OPENCV_ENABLE_NONFREE=ON \
+#    #-D BUILD_opencv_dnn=OFF \
+#    -D BUILD_opencv_ml=OFF \
+#    -D BUILD_opencv_stitching=OFF \
+#    -D BUILD_opencv_ts=OFF \
+#    -D BUILD_opencv_java_bindings_generator=OFF \
+#    -D BUILD_opencv_python_bindings_generator=OFF \
+#    -D INSTALL_PYTHON_EXAMPLES=OFF \
+#    -D BUILD_EXAMPLES=OFF .. && make -j8 && make install && cd ../.. && rm -rf opencv*
 
 ############################
 # Build Golang
