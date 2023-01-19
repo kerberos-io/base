@@ -1,4 +1,4 @@
-FROM debian:wormbook
+FROM debian:bookworm
 LABEL Author=Kerberos.io
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essential \
