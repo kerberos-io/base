@@ -1,4 +1,4 @@
-name: Docker amd64
+name: AMD64
 
 on:
   push:

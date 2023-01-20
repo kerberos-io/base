@@ -1,4 +1,4 @@
-name: Docker arm64
+name: ARM64
 
 on:
   push:

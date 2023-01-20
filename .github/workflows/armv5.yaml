@@ -1,4 +1,4 @@
-name: Docker armv5
+name: ARMv5
 
 on:
   push:
