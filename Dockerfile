@@ -25,7 +25,6 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
     --extra-ldflags="-latomic" \
     --enable-avfilter \
     --disable-zlib \
-    --enable-avresample \
     --enable-gpl \ 
     --extra-libs=-latomic  \
     --enable-static --disable-shared  && \
