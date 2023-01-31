@@ -7,6 +7,14 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essent
     cmake wget dh-autoreconf autotools-dev autoconf automake gcc \
     build-essential libtool make ca-certificates nasm tar unzip wget pkg-config
 
+
+########################
+# Download Yarn
+
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g yarn
+
 #############################
 # Static build x264
 
@@ -32,10 +40,3 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
     make -j8 && \
     make install && \
     cd .. && rm -rf FFmpeg
-
-########################
-# Download Yarn
-
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g yarn
