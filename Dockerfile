@@ -35,9 +35,20 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
 ###############
 # Download Yarn
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y yarn
+RUN mkdir /usr/local/nvm
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 16.17.0
+RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN wget https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn_1.22.19_all.deb && \
+    dpkg -i yarn_1.22.19_all.deb
 
 ############################
 # Build Golang
