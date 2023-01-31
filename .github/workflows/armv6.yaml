@@ -24,6 +24,6 @@ jobs:
     - name: Available platforms
       run: echo ${{ steps.buildx.outputs.platforms }}
     - name: Run Buildx
-      run: docker buildx build --platform linux/arm/v6 -t kerberos/base:armv6-$(echo $GITHUB_SHA | cut -c1-7) --push . 
+      run: docker buildx build --platform linux/arm/v6 -t kerberos/base:armv6-$(echo $GITHUB_SHA | cut -c1-7) -f Dockerfile-armv6 --push . 
     - name: Append manifest
       run: docker buildx imagetools create --append -t kerberos/base:$(echo $GITHUB_SHA | cut -c1-7) kerberos/base:armv6-$(echo $GITHUB_SHA | cut -c1-7)
