@@ -4,7 +4,7 @@ LABEL Author=Kerberos.io
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essential \
     cmake libc-ares-dev uuid-dev daemon libwebsockets-dev git \
     cmake wget dh-autoreconf autotools-dev autoconf automake gcc \
-    build-essential libtool make ca-certificates nasm tar unzip wget pkg-config
+    build-essential libtool make ca-certificates nasm tar unzip wget pkg-config curl
 
 #############################
 # Static build x264
