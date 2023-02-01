@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-golang AS builder
+FROM balenalib/rpi-raspbian:bullseye-20221229 AS builder
 
 LABEL Author=Kerberos.io
 
@@ -32,3 +32,19 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
     make -j8 && \
     make install && \
     cd .. && rm -rf FFmpeg
+
+############################
+# Build Golang
+
+ENV GOROOT=/usr/local/go
+ENV GOPATH=/go
+ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+RUN ARCH=$(uname -m) && \
+    ARCH=$([ "$(uname -m)" = "armv7l" ] && echo "armv6l" || echo $ARCH) && \
+    ARCH=$([ "$(uname -m)" = "x86_64" ] && echo "amd64" || echo $ARCH) && \
+    ARCH=$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo $ARCH) && \
+    wget "https://dl.google.com/go/go1.19.linux-$ARCH.tar.gz" && \
+    tar -xvf "go1.19.linux-$ARCH.tar.gz" && \
+    rm -rf go1.19.linux-$ARCH.tar.gz && \
+    mv go /usr/local
