@@ -35,7 +35,7 @@ RUN git clone https://github.com/FFmpeg/FFmpeg && \
 ###############
 # Download Yarn
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g yarn
 

@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-golang AS builder
+FROM balenalib/raspberry-pi-node:16-buster AS builder
 
 LABEL Author=Kerberos.io
 
@@ -7,12 +7,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y wget build-essent
     cmake wget dh-autoreconf autotools-dev autoconf automake gcc \
     build-essential libtool make ca-certificates nasm tar unzip wget pkg-config
 
-
 ########################
 # Download Yarn
 
-RUN     wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v16.3.0.sh | bash && \
-    apt-get install -y nodejs && \
+RUN install_packages nodejs && \
     npm install -g yarn
 
 #############################
