@@ -20,7 +20,7 @@ RUN git clone https://code.videolan.org/videolan/x264.git && \
 # Clone and build FFMpeg & OpenCV
 
 RUN git clone https://github.com/FFmpeg/FFmpeg && \
-    cd FFmpeg && git checkout n5.0.1 && \
+    cd FFmpeg && git checkout n6.0.1 && \
     ./configure --prefix=/usr/local --target-os=linux --enable-nonfree \
     --extra-ldflags="-latomic" \
     --enable-avfilter \
