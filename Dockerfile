@@ -43,7 +43,7 @@ RUN ARCH=$(uname -m) && \
     ARCH=$([ "$(uname -m)" = "armv7l" ] && echo "armv6l" || echo $ARCH) && \
     ARCH=$([ "$(uname -m)" = "x86_64" ] && echo "amd64" || echo $ARCH) && \
     ARCH=$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo $ARCH) && \
-    wget "https://dl.google.com/go/go1.22.8.linux-$ARCH.tar.gz" && \
-    tar -xvf "go1.22.8.linux-$ARCH.tar.gz" && \
-    rm -rf go1.22.8.linux-$ARCH.tar.gz && \
+    wget "https://dl.google.com/go/go1.23.1.linux-$ARCH.tar.gz" && \
+    tar -xvf "go1.23.1.linux-$ARCH.tar.gz" && \
+    rm -rf go1.23.1.linux-$ARCH.tar.gz && \
     mv go /usr/local
